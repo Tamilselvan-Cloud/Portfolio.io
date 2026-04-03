@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tamilselvan M — Cloud & DevOps Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0a0d14;
+      --bg2: #0f1320;
+      --card: #131926;
+      --border: #1e2740;
+      --accent: #4f8ef7;
+      --accent2: #7dd3b8;
+      --accent3: #f7b84f;
+      --text: #e8edf8;
+      --muted: #6b7a9e;
+      --white: #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: rgba(10,13,20,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta { background: var(--accent); color: var(--white); padding: 0.5rem 1.25rem; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: opacity 0.2s; }
+    .nav-cta:hover { opacity: 0.85; }
+    #hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; }
+    .hero-grid-bg { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(79,142,247,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(79,142,247,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+    .hero-glow { position: absolute; top: 10%; right: 10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(79,142,247,0.12) 0%, transparent 70%); pointer-events: none; }
+    .hero-glow2 { position: absolute; bottom: 5%; left: 5%; width: 350px; height: 350px; background: radial-gradient(circle, rgba(125,211,184,0.08) 0%, transparent 70%); pointer-events: none; }
+    .hero-content { max-width: 780px; position: relative; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(79,142,247,0.1); border: 1px solid rgba(79,142,247,0.25); color: var(--accent); padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2rem; animation: fadeUp 0.6s ease both; }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent2); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+    h1 { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 1rem; animation: fadeUp 0.6s 0.1s ease both; }
+    h1 span { color: var(--accent); }
+    .hero-sub { font-size: 1.25rem; color: var(--muted); font-weight: 300; margin-bottom: 2.5rem; max-width: 600px; animation: fadeUp 0.6s 0.2s ease both; }
+    .hero-summary { color: #9aa5c0; font-size: 1rem; line-height: 1.75; border-left: 2px solid var(--accent); padding-left: 1.5rem; margin-bottom: 3rem; max-width: 640px; animation: fadeUp 0.6s 0.3s ease both; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.4s ease both; }
+    .btn-primary { background: var(--accent); color: var(--white); padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(79,142,247,0.3); display: inline-block; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(79,142,247,0.5); }
+    .btn-ghost { background: transparent; color: var(--text); padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.95rem; border: 1px solid var(--border); transition: border-color 0.2s, color 0.2s; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-stats { margin-top: 4rem; display: flex; gap: 3rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.5s ease both; }
+    .stat-item .stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--white); }
+    .stat-item .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    @keyframes fadeUp { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
+    section { padding: 6rem 4rem; }
+    section:nth-child(even) { background: var(--bg2); }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 3.5rem; color: var(--white); }
+    .max-w { max-width: 1100px; margin: 0 auto; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+    .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: border-color 0.2s, transform 0.2s; }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .skill-card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .skill-card-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--white); margin-bottom: 0.5rem; }
+    .skill-card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+    .tag { background: rgba(79,142,247,0.1); color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 500; }
+    .tag.green { background: rgba(125,211,184,0.1); color: var(--accent2); }
+    .tag.yellow { background: rgba(247,184,79,0.1); color: var(--accent3); }
+    .timeline { display: flex; flex-direction: column; gap: 2rem; }
+    .timeline-item { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; position: relative; transition: border-color 0.2s; }
+    .timeline-item:hover { border-color: rgba(79,142,247,0.4); }
+    .timeline-item::before { content: ''; position: absolute; left: -1px; top: 2rem; bottom: 2rem; width: 3px; background: linear-gradient(var(--accent), var(--accent2)); border-radius: 0 2px 2px 0; }
+    .job-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+    .job-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.15rem; color: var(--white); }
+    .job-company { color: var(--accent); font-weight: 500; font-size: 0.9rem; margin-top: 0.2rem; }
+    .job-period { background: rgba(79,142,247,0.1); color: var(--accent); padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+    .job-bullets { list-style: none; padding: 0; }
+    .job-bullets li { padding: 0.35rem 0 0.35rem 1.25rem; position: relative; color: #9aa5c0; font-size: 0.92rem; }
+    .job-bullets li::before { content: '\2192'; position: absolute; left: 0; color: var(--accent2); font-size: 0.8rem; }
+    .ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+    .ach-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; text-align: center; transition: transform 0.2s, border-color 0.2s; }
+    .ach-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+    .ach-num { font-family: 'Syne', sans-serif; font-size: 2.8rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .ach-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.4; }
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
+    .cert-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; display: flex; align-items: flex-start; gap: 1rem; transition: border-color 0.2s, transform 0.2s; }
+    .cert-card:hover { border-color: var(--accent3); transform: translateY(-2px); }
+    .cert-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+    .cert-icon.aws { background: rgba(247,184,79,0.15); }
+    .cert-icon.azure { background: rgba(79,142,247,0.15); }
+    .cert-icon.oci { background: rgba(125,211,184,0.15); }
+    .cert-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--white); line-height: 1.3; }
+    .cert-code { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link { display: flex; align-items: center; gap: 1rem; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; text-decoration: none; color: var(--text); transition: border-color 0.2s, color 0.2s; }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-link-icon { font-size: 1.2rem; }
+    .contact-link-label { font-size: 0.8rem; color: var(--muted); }
+    .contact-link-value { font-weight: 500; font-size: 0.92rem; }
+    footer { text-align: center; padding: 2.5rem 4rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+    .tech-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
+    @media(max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      #hero { padding: 7rem 1.5rem 3rem; }
+      .hero-stats { gap: 2rem; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .tech-row { grid-template-columns: 1fr; }
+    }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">TamilselvanM</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#certs">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:sktamilvb@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">&#x1F7E2; Available for Opportunities</div>
+    <h1>Tamilselvan <span>M</span></h1>
+    <p class="hero-sub">Cloud &amp; DevOps Engineer &middot; AWS &middot; Azure &middot; GCP &middot; Terraform</p>
+    <p class="hero-summary">
+      Cloud Engineer with hands-on experience designing, deploying, and optimizing scalable multi-cloud infrastructure. Demonstrated success improving system reliability and reducing downtime by 50%, delivering 30% cloud cost savings through FinOps strategies, and ensuring 99.9% SLA compliance.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get In Touch</a>
+      <a href="https://linkedin.com/in/tamilselvan8413" target="_blank" class="btn-ghost">LinkedIn &rarr;</a>
+      <a href="https://github.com/SKTAMILVB" target="_blank" class="btn-ghost">GitHub &rarr;</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">3+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Certifications</div></div>
+      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Cloud Platforms</div></div>
+      <div class="stat-item"><div class="stat-num">99.9%</div><div class="stat-label">SLA Maintained</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="max-w">
+    <p class="section-label reveal">Core Competencies</p>
+    <h2 class="section-title reveal">Skills &amp; Expertise</h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal"><div class="skill-card-icon">&#x2601;&#xFE0F;</div><div class="skill-card-name">Cloud Platforms</div><div class="skill-card-tags"><span class="tag yellow">AWS</span><span class="tag">Azure</span><span class="tag green">GCP</span></div></div>
+      <div class="skill-card reveal"><div class="skill-card-icon">&#x1F3D7;&#xFE0F;</div><div class="skill-card-name">Infrastructure as Code</div><div class="skill-card-tags"><span class="tag">Terraform</span><span class="tag yellow">CloudFormation</span><span class="tag green">Ansible</span></div></div>
+      <div class="skill-card reveal"><div class="skill-card-icon">&#x1F504;</div><div class="skill-card-name">CI/CD &amp; DevOps</div><div class="skill-card-tags"><span class="tag">GitHub Actions</span><span class="tag">Azure DevOps</span><span class="tag yellow">Jenkins</span></div></div>
+      <div class="skill-card reveal"><div class="skill-card-icon">&#x1F433;</div><div class="skill-card-name">Containerization &amp; Orchestration</div><div class="skill-card-tags"><span class="tag">Docker</span><span class="tag green">Kubernetes</span><span class="tag">EKS / AKS / GKE</span></div></div>
+      <div class="skill-card reveal"><div class="skill-card-icon">&#x1F4CA;</div><div class="skill-card-name">Monitoring &amp; Observability</div><div class="skill-card-tags"><span class="tag yellow">CloudWatch</span><span class="tag">Prometheus</span><span class="tag green">Grafana</span><span class="tag">Azure Monitor</span></div></div>
+      <div class="skill-card reveal"><div class="skill-card-icon">&#x1F510;</div><div class="skill-card-name">Security &amp; Compliance</div><div class="skill-card-tags"><span class="tag">IAM</span><span class="tag">RBAC</span><span class="tag yellow">CIS Benchmarks</span><span class="tag green">CloudTrail</span></div></div>
+      <div class="skill-card reveal"><div class="skill-card-icon">&#x1F4B0;</div><div class="skill-card-name">FinOps &amp; Cost Optimization</div><div class="skill-card-tags"><span class="tag">Cost Explorer</span><span class="tag yellow">Right-Sizing</span><span class="tag green">Spot Instances</span></div></div>
+      <div class="skill-card reveal"><div class="skill-card-icon">&#x1F310;</div><div class="skill-card-name">Networking</div><div class="skill-card-tags"><span class="tag">VPN</span><span class="tag">DNS</span><span class="tag yellow">Load Balancing</span><span class="tag green">NSG / SG</span></div></div>
+      <div class="skill-card reveal"><div class="skill-card-icon">&#x26A1;</div><div class="skill-card-name">Incident Management</div><div class="skill-card-tags"><span class="tag">L2/L3 Support</span><span class="tag yellow">SLA Compliance</span><span class="tag green">DR Planning</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="max-w">
+    <p class="section-label reveal">Deep Dive</p>
+    <h2 class="section-title reveal">Technical Stack</h2>
+    <div class="skill-card reveal" style="max-width:100%;margin-bottom:0;">
+      <div class="skill-card-name" style="margin-bottom:1rem;">&#x2601;&#xFE0F; AWS Services</div>
+      <div class="skill-card-tags" style="gap:0.5rem;">
+        <span class="tag yellow">EC2</span><span class="tag yellow">S3</span><span class="tag yellow">Lambda</span><span class="tag yellow">IAM</span><span class="tag yellow">VPC</span><span class="tag yellow">ELB</span><span class="tag yellow">Auto Scaling</span><span class="tag yellow">Route 53</span><span class="tag yellow">API Gateway</span><span class="tag yellow">CloudFormation</span><span class="tag yellow">CloudWatch</span><span class="tag yellow">CloudTrail</span><span class="tag yellow">SQS</span><span class="tag yellow">SNS</span>
+      </div>
+    </div>
+    <div class="tech-row">
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">&#x1F537;</div>
+        <div class="skill-card-name">Azure</div>
+        <div class="skill-card-tags"><span class="tag">Virtual Machines</span><span class="tag">Azure Functions</span><span class="tag">VNet</span><span class="tag">Azure AD</span><span class="tag">NSG</span><span class="tag">Load Balancer</span><span class="tag">Log Analytics</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">&#x1F7E2;</div>
+        <div class="skill-card-name">GCP</div>
+        <div class="skill-card-tags"><span class="tag green">Compute Engine</span><span class="tag green">Cloud Storage</span><span class="tag green">VPC</span><span class="tag green">IAM</span><span class="tag green">Cloud Monitoring</span><span class="tag green">Artifact Registry</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">&#x1F5A5;&#xFE0F;</div>
+        <div class="skill-card-name">Systems &amp; Scripting</div>
+        <div class="skill-card-tags"><span class="tag">Linux Scripting</span><span class="tag">Oracle VM</span><span class="tag">Microsoft 365</span><span class="tag yellow">On-Premises Infra</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="max-w">
+    <p class="section-label reveal">Career Path</p>
+    <h2 class="section-title reveal">Professional Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Cloud Operations Engineer &mdash; L2/L3 Support</div>
+            <div class="job-company">3i Infotech Ltd. &middot; Chennai, India</div>
+          </div>
+          <div class="job-period">Jan 2024 &mdash; Present</div>
+        </div>
+        <ul class="job-bullets">
+          <li>Designed and optimized scalable, secure, highly available multi-cloud architectures across AWS, Azure, and GCP supporting production workloads.</li>
+          <li>Reduced system downtime by 50% through proactive monitoring, automated remediation, and resilient design patterns &mdash; achieving 99.9% SLA compliance.</li>
+          <li>Implemented Infrastructure as Code using Terraform to standardize provisioning and enforce consistent architecture across cloud environments.</li>
+          <li>Drove 30% cost optimization via auto-scaling, right-sizing, Reserved and Spot Instances aligned with FinOps practices.</li>
+          <li>Strengthened cloud security by implementing IAM least-privilege models, RBAC, network segmentation, and centralized audit logging with CloudTrail.</li>
+          <li>Designed Disaster Recovery architectures including multi-region deployments, backup strategies, and automated failover mechanisms.</li>
+          <li>Led cross-functional collaboration with dev, networking, and security teams to define architecture standards and improve system resilience.</li>
+        </ul>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Cloud Engineer &mdash; Monitoring &amp; Support</div>
+            <div class="job-company">3i Infotech &middot; Chennai, India</div>
+          </div>
+          <div class="job-period">Jun 2022 &mdash; Dec 2023</div>
+        </div>
+        <ul class="job-bullets">
+          <li>Designed and implemented real-time monitoring dashboards and automated alerting using AWS CloudWatch and Azure Monitor for proactive detection.</li>
+          <li>Managed cloud incident response across AWS and Azure, ensuring timely resolution and minimal service disruption.</li>
+          <li>Maintained 99.9% SLA compliance through regular audits, proactive maintenance, and automated failover strategies.</li>
+          <li>Resolved L2/L3 incidents related to performance bottlenecks, network outages, and failures across multi-cloud environments.</li>
+          <li>Collaborated with security teams on vulnerability scanning, patch management, and compliance reporting.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="achievements">
+  <div class="max-w">
+    <p class="section-label reveal">Impact</p>
+    <h2 class="section-title reveal">Key Achievements</h2>
+    <div class="ach-grid">
+      <div class="ach-card reveal"><div class="ach-num">50%</div><div class="ach-label">Reduction in System Downtime through proactive monitoring &amp; automated alerting</div></div>
+      <div class="ach-card reveal"><div class="ach-num">30%</div><div class="ach-label">Cloud Cost Savings via FinOps strategies, auto-scaling &amp; Reserved Instances</div></div>
+      <div class="ach-card reveal"><div class="ach-num">40%</div><div class="ach-label">Reduction in Provisioning Time using Terraform &amp; Ansible automation</div></div>
+      <div class="ach-card reveal"><div class="ach-num">35%</div><div class="ach-label">Improvement in Resource Utilization through containerized Kubernetes workloads</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="max-w">
+    <p class="section-label reveal">Credentials</p>
+    <h2 class="section-title reveal">Certifications</h2>
+    <div class="cert-grid">
+      <div class="cert-card reveal"><div class="cert-icon azure">&#x1F537;</div><div><div class="cert-name">Microsoft Certified: Azure Administrator Associate</div><div class="cert-code">AZ-104</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon aws">&#x2601;&#xFE0F;</div><div><div class="cert-name">AWS Certified Solutions Architect &ndash; Associate</div><div class="cert-code">SAA-C03</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon aws">&#x2601;&#xFE0F;</div><div><div class="cert-name">AWS Certified Cloud Practitioner</div><div class="cert-code">CLF-C02</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon oci">&#x1F7E0;</div><div><div class="cert-name">Oracle Cloud Infrastructure Foundations Associate</div><div class="cert-code">OCI 2023</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="max-w">
+    <p class="section-label reveal">Education</p>
+    <h2 class="section-title reveal">Academic Background</h2>
+    <div class="timeline-item reveal" style="max-width:600px;">
+      <div class="job-header">
+        <div>
+          <div class="job-title">B.E. in Computer Science &amp; Engineering</div>
+          <div class="job-company">Kalasalingam Academy of Research and Education &middot; Tamil Nadu</div>
+        </div>
+        <div class="job-period">May 2021</div>
+      </div>
+      <p style="color:var(--muted);margin-top:0.75rem;font-size:0.9rem;">CGPA: 7.08 / 10.0</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="max-w">
+    <p class="section-label reveal">Let's Connect</p>
+    <h2 class="section-title reveal">Get In Touch</h2>
+    <div class="contact-grid">
+      <div>
+        <p style="color:var(--muted);margin-bottom:2rem;max-width:400px;">Open to cloud engineering roles, infrastructure consulting, and DevOps opportunities. Feel free to reach out!</p>
+        <div class="contact-info">
+          <a href="mailto:sktamilvb@gmail.com" class="contact-link reveal"><span class="contact-link-icon">&#x2709;&#xFE0F;</span><div><div class="contact-link-label">Email</div><div class="contact-link-value">sktamilvb@gmail.com</div></div></a>
+          <a href="tel:+918778597995" class="contact-link reveal"><span class="contact-link-icon">&#x1F4F1;</span><div><div class="contact-link-label">Phone</div><div class="contact-link-value">+91 87785 97995</div></div></a>
+          <a href="https://linkedin.com/in/tamilselvan8413" target="_blank" class="contact-link reveal"><span class="contact-link-icon">&#x1F4BC;</span><div><div class="contact-link-label">LinkedIn</div><div class="contact-link-value">linkedin.com/in/tamilselvan8413</div></div></a>
+          <a href="https://github.com/SKTAMILVB" target="_blank" class="contact-link reveal"><span class="contact-link-icon">&#x1F419;</span><div><div class="contact-link-label">GitHub</div><div class="contact-link-value">github.com/SKTAMILVB</div></div></a>
+          <div class="contact-link reveal" style="cursor:default;"><span class="contact-link-icon">&#x1F4CD;</span><div><div class="contact-link-label">Location</div><div class="contact-link-value">Chennai, India</div></div></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem;" class="reveal">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:2rem;">
+          <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;color:var(--white);">Languages</p>
+          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem;"><span style="font-size:0.9rem;">English</span><span style="font-size:0.8rem;color:var(--accent);">Professional</span></div>
+              <div style="height:4px;background:var(--border);border-radius:2px;"><div style="height:4px;width:85%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem;"><span style="font-size:0.9rem;">Tamil</span><span style="font-size:0.8rem;color:var(--accent2);">Native</span></div>
+              <div style="height:4px;background:var(--border);border-radius:2px;"><div style="height:4px;width:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:2px;"></div></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(79,142,247,0.12),rgba(125,211,184,0.06));border:1px solid rgba(79,142,247,0.2);border-radius:14px;padding:2rem;text-align:center;">
+          <p style="font-size:0.9rem;color:var(--muted);margin-bottom:1rem;">Download my full resume</p>
+          <a href="Tamilselvan_M_31-03-2026_.docx" download class="btn-primary">&#x2B07; Download Resume</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with &#x2764;&#xFE0F; by Tamilselvan M &middot; Cloud &amp; DevOps Engineer &middot; Chennai, India</p>
+  <p style="margin-top:0.4rem;font-size:0.8rem;">&copy; 2025 Tamilselvan M. All rights reserved.</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if(e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
